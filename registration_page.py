@@ -1,5 +1,6 @@
 import os
 from selene import browser, have
+def PageRegistration():
 
 def fill_first_name(self, first_name):
     browser.element('#firstName').type(first_name).press_tab()
@@ -32,7 +33,7 @@ def fill_date_of_birth(self, year, month, day):
     browser.element(f'[value={year}]').click()
     browser.element('.react-datepicker__month-select').click()
     browser.element(f'[value={month}]').click()
-    browser.element('[aria-label="Choose Sunday, April 3rd, 1977"]').click()
+    browser.element(f'.react-datepicker__day--00{day}').click()
     return self
 
 def fill_subject(self, subject):
@@ -65,7 +66,7 @@ def submit(self):
     browser.element('#submit').click()
     return self
 
-def should_have_registered(self, first_name, last_name, email):
+def should_have_registered(self, first_name, last_name, email, address, state, ):
     browser.element('.table-responsive').should(have.text(f"{first_name} {last_name}"))
     browser.element('.table-responsive').should(have.text(email))
     browser.element('.table-responsive').should(have.text('Female'))
@@ -74,6 +75,6 @@ def should_have_registered(self, first_name, last_name, email):
     browser.element('.table-responsive').should(have.text('English'))
     browser.element('.table-responsive').should(have.text('Sports'))
     browser.element('.table-responsive').should(have.text('dog.jpeg'))
-    browser.element('.table-responsive').should(have.text('Moscow, Line'))
-    browser.element('.table-responsive').should(have.text('NCR Delhi'))
+    browser.element('.table-responsive').should(have.text(address))
+    browser.element('.table-responsive').should(have.text(f"{state} {last_name}"))
 
