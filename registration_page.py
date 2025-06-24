@@ -1,0 +1,79 @@
+import os
+from selene import browser, have
+
+def fill_first_name(self, first_name):
+    browser.element('#firstName').type(first_name).press_tab()
+    return self  # Возвращаем объект для цепочной работы
+
+def fill_last_name(self, last_name):
+    browser.element('#lastName').type(last_name).press_tab()
+    return self
+
+def fill_email(self, email):
+    browser.element('#userEmail').type(email)
+    return self
+
+def select_gender(self, gender):
+    if gender=="Male":
+        browser.element('[for="gender-radio-1"]').click()
+    elif gender=="Female":
+        browser.element('[for="gender-radio-2"]').click()
+    else:
+        browser.element('[for="gender-radio-3"]').click()
+    return self
+
+def fill_user_number(self, number):
+    browser.element('#userNumber').type(number)
+    return self
+
+def fill_date_of_birth(self, year, month, day):
+    browser.element('#dateOfBirthInput').click()
+    browser.element('.react-datepicker__year-select').click()
+    browser.element(f'[value={year}]').click()
+    browser.element('.react-datepicker__month-select').click()
+    browser.element(f'[value={month}]').click()
+    browser.element('[aria-label="Choose Sunday, April 3rd, 1977"]').click()
+    return self
+
+def fill_subject(self, subject):
+    browser.element('#subjectsInput').type(subject).press_enter()
+    return self
+
+def select_hobby(self, hobby):
+    if hobby=="Sports":
+        browser.element('[for="hobbies-checkbox-1"]').click()
+    elif hobby=="Reading":
+        browser.element('[for="hobbies-checkbox-2"]').click()
+    else:
+        browser.element('[for="hobbies-checkbox-3"]').click()
+    return self
+
+def upload_picture(self, picture_path):
+    browser.element("#uploadPicture").send_keys(os.path.abspath(picture_path))
+    return self
+
+def fill_current_address(self, address):
+    browser.element('#currentAddress').type(address)
+    return self
+
+def select_state_and_city(self, state, city):
+    browser.element('#react-select-3-input').type(state).press_enter()
+    browser.element('#react-select-4-input').type(city).press_enter()
+    return self
+
+def submit(self):
+    browser.element('#submit').click()
+    return self
+
+def should_have_registered(self, first_name, last_name, email):
+    browser.element('.table-responsive').should(have.text(f"{first_name} {last_name}"))
+    browser.element('.table-responsive').should(have.text(email))
+    browser.element('.table-responsive').should(have.text('Female'))
+    browser.element('.table-responsive').should(have.text('8965201454'))
+    browser.element('.table-responsive').should(have.text('03 April,1977'))
+    browser.element('.table-responsive').should(have.text('English'))
+    browser.element('.table-responsive').should(have.text('Sports'))
+    browser.element('.table-responsive').should(have.text('dog.jpeg'))
+    browser.element('.table-responsive').should(have.text('Moscow, Line'))
+    browser.element('.table-responsive').should(have.text('NCR Delhi'))
+
