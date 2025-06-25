@@ -1,6 +1,11 @@
 import os
 from selene import browser, have
-def PageRegistration():
+class RegistrationPage():
+
+
+def open(self):
+    browser.open('https://demoqa.com/automation-practice-form')
+    return self  # Возвращает объект для цепочной работы
 
 def fill_first_name(self, first_name):
     browser.element('#firstName').type(first_name).press_tab()
@@ -27,14 +32,15 @@ def fill_user_number(self, number):
     browser.element('#userNumber').type(number)
     return self
 
+
 def fill_date_of_birth(self, year, month, day):
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__year-select').click()
-    browser.element(f'[value={year}]').click()
-    browser.element('.react-datepicker__month-select').click()
-    browser.element(f'[value={month}]').click()
-    browser.element(f'.react-datepicker__day--00{day}').click()
-    return self
+        browser.element('#dateOfBirthInput').click()
+        browser.element('select.react-datepicker__year-select').click()
+        browser.element(f'[value="{year}"]').click()
+        browser.element('select.react-datepicker__month-select').click()
+        browser.all('option').element_by(have.text(month)).click()
+        browser.element(f'.react-datepicker__day--00{day}').click()
+        return self
 
 def fill_subject(self, subject):
     browser.element('#subjectsInput').type(subject).press_enter()
