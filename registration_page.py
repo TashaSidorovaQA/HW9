@@ -72,15 +72,15 @@ def submit(self):
     browser.element('#submit').click()
     return self
 
-def should_have_registered(self, first_name, last_name, email, address, state, ):
+def should_have_registered(self, first_name, last_name, email,gender,number,year, month, day, subject,hobby, address, state,city ):
     browser.element('.table-responsive').should(have.text(f"{first_name} {last_name}"))
     browser.element('.table-responsive').should(have.text(email))
-    browser.element('.table-responsive').should(have.text('Female'))
-    browser.element('.table-responsive').should(have.text('8965201454'))
-    browser.element('.table-responsive').should(have.text('03 April,1977'))
-    browser.element('.table-responsive').should(have.text('English'))
-    browser.element('.table-responsive').should(have.text('Sports'))
+    browser.element('.table-responsive').should(have.text(gender))
+    browser.element('.table-responsive').should(have.text(number))
+    browser.element('.table-responsive').should(have.text(f"{year},{month},{day}"))
+    browser.element('.table-responsive').should(have.text(subject))
+    browser.element('.table-responsive').should(have.text(hobby))
     browser.element('.table-responsive').should(have.text('dog.jpeg'))
     browser.element('.table-responsive').should(have.text(address))
-    browser.element('.table-responsive').should(have.text(f"{state} {last_name}"))
+    browser.element('.table-responsive').should(have.text(f"{state} {city}"))
 
