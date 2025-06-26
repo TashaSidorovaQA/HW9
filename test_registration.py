@@ -3,7 +3,7 @@ from registration_page import RegistrationPage
 def test_demoqa():
     registration_page = RegistrationPage()
 
-    registration_page.open() \
+    registration_page.open('https://demoqa.com/automation-practice-form') \
         .fill_first_name('Natasha') \
         .fill_last_name('Sidorova') \
         .fill_email('natasha147@mail.ru') \
