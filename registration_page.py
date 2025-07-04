@@ -1,6 +1,6 @@
 import os
 
-from selene import browser, have
+from selene import browser, have, command
 
 
 class RegistrationPage:
@@ -35,7 +35,8 @@ class RegistrationPage:
         return self
 
     def fill_date_of_birth(self, year, month, day):
-        browser.element('#dateOfBirthInput').click()
+        browser.element('#dateOfBirthInput').perform(command.js.scroll_into_view).click()
+        #browser.element('#dateOfBirthInput').click()
         browser.element('select.react-datepicker__year-select').click()
         browser.element(f'[value="{year}"]').click()
         browser.element('select.react-datepicker__month-select').click()
