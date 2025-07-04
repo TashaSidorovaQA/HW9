@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from selene import browser, have, command
 
@@ -58,7 +59,8 @@ class RegistrationPage:
         return self
 
     def upload_picture(self, picture_path):
-        browser.element("#uploadPicture").send_keys(os.path.abspath(picture_path))
+        img=str(Path(__file__).parent.parent.parent.joinpath(f'resources/{picture_path}'))
+        browser.element("#uploadPicture").send_keys(img)
         return self
 
     def fill_current_address(self, address):

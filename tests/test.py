@@ -20,7 +20,7 @@ def test_demoqa():
     browser.element('[aria-label="Choose Sunday, April 3rd, 1977"]').click()
     browser.element('#subjectsInput').type('English').press_enter()
     browser.element('[for="hobbies-checkbox-1"]').click()
-    browser.element("#uploadPicture").send_keys(os.path.abspath('dog.jpeg'))
+    browser.element("#uploadPicture").send_keys(os.path.abspath('../resources/dog.jpeg'))
     browser.element('#currentAddress').type('Moscow, Line')
     browser.element('#react-select-3-input').type('NCR').press_enter()
     browser.element('#react-select-4-input').type('Delhi').press_enter()

@@ -1,4 +1,4 @@
-from registration_page import RegistrationPage
+from core.pages.registration_page import RegistrationPage
 
 def test_demoqa():
     registration_page = RegistrationPage()
