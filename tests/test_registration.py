@@ -17,5 +17,5 @@ def test_demoqa():
         .select_state_and_city('NCR', 'Delhi') \
         .submit()
 
-    registration_page.should_have_registered('Natasha', 'Sidorova', 'natasha147@mail.ru', 'Female', '8965201454', '1977', 'March', '3', 'English', 'Sports',
+    registration_page.should_have_registered('Natasha', 'Sidorova', 'natasha147@mail.ru', 'Female', '8965201454', '1977', 'March', '03', 'English', 'Sports',
                                'Moscow, Line','NCR', 'Delhi')

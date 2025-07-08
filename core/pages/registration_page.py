@@ -2,7 +2,7 @@ import os
 import time
 from pathlib import Path
 
-from selene import browser, have, command
+from selene import browser, have, command, be
 
 
 class RegistrationPage:
@@ -53,11 +53,11 @@ class RegistrationPage:
 
     def select_hobby(self, hobby):
         if hobby == "Sports":
-            browser.element('[for="hobbies-checkbox-1"]').click()
+            browser.element('[for="hobbies-checkbox-1"]').should(be.clickable).click()
         elif hobby == "Reading":
-            browser.element('[for="hobbies-checkbox-2"]').click()
+            browser.element('[for="hobbies-checkbox-2"]').should(be.clickable).click()
         else:
-            browser.element('[for="hobbies-checkbox-3"]').click()
+            browser.element('[for="hobbies-checkbox-3"]').should(be.clickable).click()
         return self
 
     def upload_picture(self, picture_path):
@@ -84,7 +84,7 @@ class RegistrationPage:
         browser.element('.table-responsive').should(have.text(email))
         browser.element('.table-responsive').should(have.text(gender))
         browser.element('.table-responsive').should(have.text(number))
-        browser.element('.table-responsive').should(have.text(f"{year},{month},{day}"))
+        browser.element('.table-responsive').should(have.text(f"{day} {month},{year}"))
         browser.element('.table-responsive').should(have.text(subject))
         browser.element('.table-responsive').should(have.text(hobby))
         browser.element('.table-responsive').should(have.text('dog.jpeg'))
