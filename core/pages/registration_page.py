@@ -78,10 +78,9 @@ class RegistrationPage:
         browser.element('#submit').click()
         return self
 
-    def should_have_registered(self, first_name, last_name, email, gender, number, year, month, day, subject, hobby,
-                               address, state, city):
-        browser.element('.table-responsive').should(have.text(f"{first_name} {last_name}"))
-        browser.element('.table-responsive').should(have.text(email))
+    def should_have_registered(self, user):
+        browser.element('.table-responsive').should(have.text(f"{user.first_name} {user.last_name}"))
+        browser.element('.table-responsive').should(have.text(user.email))
         browser.element('.table-responsive').should(have.text(gender))
         browser.element('.table-responsive').should(have.text(number))
         browser.element('.table-responsive').should(have.text(f"{day} {month},{year}"))
@@ -92,8 +91,8 @@ class RegistrationPage:
         browser.element('.table-responsive').should(have.text(f"{state} {city}"))
 
 def register(user):
-    fill_first_name('Natasha') \
-        .fill_last_name('Sidorova') \
+    RegistrationPage.fill_first_name(user.first_name) \
+        .fill_last_name(user.last_name) \
         .fill_email('natasha147@mail.ru') \
         .select_gender('Female') \
         .fill_user_number('8965201454') \
