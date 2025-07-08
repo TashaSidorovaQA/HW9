@@ -1,6 +1,13 @@
 from core.pages.registration_page import RegistrationPage
 
 def test_demoqa():
+    natasha = User()
+    registration_page.open()
+    registration_page.register(natasha)
+    registration_page.should_have_registered(natasha)
+
+
+
     registration_page = RegistrationPage()
 
     registration_page.open('/automation-practice-form') \

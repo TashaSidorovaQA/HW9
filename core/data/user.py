@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 @dataclass
 class User:
-    first_name: str
+    first_name: str = 'Natasha'
     last_name: str
     email: str
     gender: str = 'Female'  # Значение по умолчанию

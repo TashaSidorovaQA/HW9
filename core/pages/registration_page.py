@@ -90,3 +90,17 @@ class RegistrationPage:
         browser.element('.table-responsive').should(have.text('dog.jpeg'))
         browser.element('.table-responsive').should(have.text(address))
         browser.element('.table-responsive').should(have.text(f"{state} {city}"))
+
+def register(user):
+    fill_first_name('Natasha') \
+        .fill_last_name('Sidorova') \
+        .fill_email('natasha147@mail.ru') \
+        .select_gender('Female') \
+        .fill_user_number('8965201454') \
+        .fill_date_of_birth('1977', '3', '3') \
+        .fill_subject('English') \
+        .select_hobby('Sports') \
+        .upload_picture('dog.jpeg') \
+        .fill_current_address('Moscow, Line') \
+        .select_state_and_city('NCR', 'Delhi') \
+        .submit()
