@@ -1,4 +1,5 @@
 import os
+import time
 from pathlib import Path
 
 from selene import browser, have, command
@@ -37,11 +38,12 @@ class RegistrationPage:
 
     def fill_date_of_birth(self, year, month, day):
         browser.element('#dateOfBirthInput').perform(command.js.scroll_into_view).click()
-        #browser.element('#dateOfBirthInput').click()
+        time.sleep(1)
         browser.element('select.react-datepicker__year-select').click()
         browser.element(f'[value="{year}"]').click()
         browser.element('select.react-datepicker__month-select').click()
-        browser.all('option').element_by(have.text(month)).click()
+        m=int(month)-1
+        browser.element(f'[value="{m}"]').click()
         browser.element(f'.react-datepicker__day--00{day}').click()
         return self
 
