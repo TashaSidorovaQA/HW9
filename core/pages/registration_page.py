@@ -81,25 +81,25 @@ class RegistrationPage:
     def should_have_registered(self, user):
         browser.element('.table-responsive').should(have.text(f"{user.first_name} {user.last_name}"))
         browser.element('.table-responsive').should(have.text(user.email))
-        browser.element('.table-responsive').should(have.text(gender))
-        browser.element('.table-responsive').should(have.text(number))
-        browser.element('.table-responsive').should(have.text(f"{day} {month},{year}"))
-        browser.element('.table-responsive').should(have.text(subject))
-        browser.element('.table-responsive').should(have.text(hobby))
+        browser.element('.table-responsive').should(have.text(user.gender))
+        browser.element('.table-responsive').should(have.text(user.number))
+        browser.element('.table-responsive').should(have.text(f"{user.day} {user.month},{user.year}"))
+        browser.element('.table-responsive').should(have.text(user.subject))
+        browser.element('.table-responsive').should(have.text(user.hobby))
         browser.element('.table-responsive').should(have.text('dog.jpeg'))
-        browser.element('.table-responsive').should(have.text(address))
-        browser.element('.table-responsive').should(have.text(f"{state} {city}"))
+        browser.element('.table-responsive').should(have.text(user.address))
+        browser.element('.table-responsive').should(have.text(f"{user.state} {user.city}"))
 
 def register(user):
     RegistrationPage.fill_first_name(user.first_name) \
         .fill_last_name(user.last_name) \
-        .fill_email('natasha147@mail.ru') \
-        .select_gender('Female') \
-        .fill_user_number('8965201454') \
-        .fill_date_of_birth('1977', '3', '3') \
-        .fill_subject('English') \
-        .select_hobby('Sports') \
-        .upload_picture('dog.jpeg') \
-        .fill_current_address('Moscow, Line') \
-        .select_state_and_city('NCR', 'Delhi') \
+        .fill_email(user.email) \
+        .select_gender(user.gender) \
+        .fill_user_number(user.number) \
+        .fill_date_of_birth(user.year, user.month, user.day) \
+        .fill_subject(user.subject) \
+        .select_hobby(user.hobby) \
+        .upload_picture(dog.jpeg) \
+        .fill_current_address(user.address) \
+        .select_state_and_city(user.state, user.city) \
         .submit()
