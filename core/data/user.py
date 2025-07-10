@@ -2,10 +2,10 @@ from dataclasses import dataclass
 @dataclass
 class User:
     first_name: str = 'Natasha'
-    last_name: str
-    email: str
+    last_name: str = 'Sidorova'
+    email: str = 'natasha147@mail.ru'
     gender: str = 'Female'  # Значение по умолчанию
-    phone: str = ''
+    phone: str = '8965201454'
     birth_year: str = '1977'
     birth_month: str = '3'
     birth_day: str = '3'
