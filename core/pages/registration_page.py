@@ -90,17 +90,18 @@ class RegistrationPage:
         browser.element('.table-responsive').should(have.text(user.address))
         browser.element('.table-responsive').should(have.text(f"{user.state} {user.city}"))
 
+    def register(self, user):
+        self.fill_first_name(user.first_name)
+        self.fill_last_name(user.last_name)
+        self.fill_email(user.email)
+        self.select_gender(user.gender)
+        self.fill_user_number(user.number)
+        self.fill_date_of_birth(user.year, user.month, user.day)
+        self.fill_subject(user.subject)
+        self.select_hobby(user.hobby)
+        self.upload_picture(user.picture)
+        self.fill_current_address(user.address)
+        self.select_state_and_city(user.state, user.city)
+        self.submit()
 
-def register(self, user):
-   RegistrationPage.fill_first_name(user.first_name) \
-        self.fill_last_name(user.last_name) \
-        self.fill_email(user.email) \
-        self.select_gender(user.gender) \
-        self.fill_user_number(user.number) \
-        self.fill_date_of_birth(user.year, user.month, user.day) \
-        self.fill_subject(user.subject) \
-        self.select_hobby(user.hobby) \
-        self.upload_picture(dog.jpeg) \
-        self.fill_current_address(user.address) \
-        self.select_state_and_city(user.state, user.city) \
-        self.submit_form()
+
